@@ -18,7 +18,7 @@ depends_on = None
 
 def upgrade() -> None:
     op.create_table(
-        "competition",
+        "competitions",
         sa.Column("id", sa.Integer, primary_key=True),
         sa.Column("name", sa.String(length=100), nullable=False),
         sa.Column("code", sa.String(length=10), nullable=False),

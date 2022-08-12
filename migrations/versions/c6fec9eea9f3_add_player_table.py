@@ -18,7 +18,7 @@ depends_on = None
 
 def upgrade() -> None:
     op.create_table(
-        "player",
+        "players",
         sa.Column("id", sa.Integer, primary_key=True),
         sa.Column("name", sa.String(length=100), nullable=False),
         sa.Column("position", sa.String(length=10), nullable=False),
@@ -31,4 +31,4 @@ def upgrade() -> None:
 
 
 def downgrade() -> None:
-    op.drop_table("player")    
+    op.drop_table("player")
