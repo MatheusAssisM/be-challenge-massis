@@ -1,7 +1,9 @@
 version: '3.4'
 
 services:
+
   api:
+    hostname: 'be-challenge-massis-api.com'
     build:
       context: .
       dockerfile: ./docker/Dockerfile
@@ -14,17 +16,22 @@ services:
     depends_on:
       - db
     restart: on-failure:2
-    command: bash -c "python -m server"
+    env_file:
+      - .env
+    command: bash -c "alembic upgrade head && python -m server"
+
   db:
+    hostname: 'be-challenge-massis-postgres.com'
     image: postgres
     ports:
       - "5432:5432"
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=challenge
+      - POSTGRES_DB=football
     networks:
       - network
+
 networks:
   network:
     driver: bridge
