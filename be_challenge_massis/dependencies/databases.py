@@ -1,5 +1,5 @@
 import os
-from ...configs.postgres import Postgres
+from ..configs.postgres import Postgres
 
 DB_NAME = os.getenv("DB_NAME", "football")
 DB_USER = os.getenv("DB_USER", "postgres")
