@@ -8,12 +8,12 @@ logger = logging.getLogger(__name__)
 
 class Postgres:
     def __init__(self, db_url: str):
-        self._engine = create_engine(db_url)
+        self.engine = create_engine(db_url)
         self._session_factory = scoped_session(
             sessionmaker(
                 autocommit=False,
                 autoflush=False,
-                bind=self._engine,
+                bind=self.engine,
             ),
         )
 
