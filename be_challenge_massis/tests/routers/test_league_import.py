@@ -1,4 +1,5 @@
 from ...models.league import League
+from ...models.team import Team
 
 
 def test_should_import_league(client, postgres):
@@ -6,7 +7,15 @@ def test_should_import_league(client, postgres):
 
     with postgres().session() as session:
         assert session.query(League).count() == 1
+    assert response.status_code == 201
+    assert response.json() == {"message": "League imported successfully"}
 
+
+def test_should_import_teams(client, postgres):
+    response = client.post("/import-league", json={"league_code": "PL"})
+
+    with postgres().session() as session:
+        assert session.query(Team).count() == 7
     assert response.status_code == 201
     assert response.json() == {"message": "League imported successfully"}
 
