@@ -3,6 +3,7 @@ version: '3.4'
 services:
 
   api:
+    container_name: be-challenge-massis-api
     hostname: 'be-challenge-massis-api.com'
     build:
       context: .
@@ -21,6 +22,7 @@ services:
     command: bash -c "alembic upgrade head && python -m server"
 
   db:
+    container_name: be-challenge-massis-postgres
     hostname: 'be-challenge-massis-postgres.com'
     image: postgres
     ports:
