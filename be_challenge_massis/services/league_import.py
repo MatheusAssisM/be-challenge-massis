@@ -2,12 +2,12 @@ import json
 
 from fastapi import HTTPException
 
-from be_challenge_massis.services.football_api import FootballAPIService
 from ..configs.postgres import Postgres
 from ..repositories.league import LeagueRepository
+from ..services.football_api import FootballAPIService
 
 
-class LeagueService:
+class LeagueImportService:
     def __init__(
         self,
         postgres: Postgres,
@@ -17,7 +17,6 @@ class LeagueService:
         self.football_api_service = football_api_service
 
     def import_league(self, league_code: str):
-        # TODO change this to a real request for football api
         # with open("./be_challenge_massis/helpers/mock_football_data.json", "r") as f:
         #     response = json.load(f)
 
