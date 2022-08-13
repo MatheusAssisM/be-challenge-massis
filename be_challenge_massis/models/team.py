@@ -3,7 +3,7 @@ from sqlalchemy import Column, DateTime, Integer, String, UniqueConstraint, text
 from .base import Base
 
 
-class League(Base):
+class Team(Base):
     __tablename__ = "teams"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
