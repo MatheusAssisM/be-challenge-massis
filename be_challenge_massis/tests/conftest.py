@@ -18,5 +18,5 @@ def client():
 
 
 @fixture
-def session_db():
+def postgres():
     return override_postgres_session

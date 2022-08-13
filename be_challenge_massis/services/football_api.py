@@ -16,7 +16,7 @@ class FootballAPIService:
         )
         if result.status_code != 200:
             raise HTTPException(
-                status_code=result.status_code, detail="Impossible to get league"
+                status_code=result.status_code, detail="Impossible to get this league"
             )
         return result.json()
 
