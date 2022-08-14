@@ -20,17 +20,11 @@ class LeagueImportService:
 
     def import_league(self, league_code: str):
         league = self.football_api_service.get_league(league_code)
-        if self.check_league_exists(league_code):
-            raise HTTPException(
-                status_code=409, detail="This League was already imported"
-            )
-
         league_data = self.prepare_league_data(league)
         self.league_repository.create(league_data)
 
-        team_ids = self.get_teams_ids(league["seasons"])
-        teams = self.football_api_service.get_teams(team_ids)
-        teams_data = self.prepare_teams_data(teams)
+        league_teams = self.football_api_service.get_league_teams(league_code)
+        teams_data = self.prepare_teams_data(league_teams)
         self.team_repository.bulk_create(teams_data)
 
         return "League imported successfully"
@@ -41,13 +35,6 @@ class LeagueImportService:
             "code": league["code"],
             "area_name": league["area"]["name"],
         }
-
-    def check_league_exists(self, league_code: str):
-        return self.league_repository.get_by_code(league_code)
-
-    def get_teams_ids(self, seasons: list):
-        team_ids = {season["winner"]["id"] for season in seasons if season["winner"]}
-        return team_ids
 
     def prepare_teams_data(self, teams):
         teams_data = []
