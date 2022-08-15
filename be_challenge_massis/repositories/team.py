@@ -22,3 +22,7 @@ class TeamRepository:
     def get_team_by_name(self, team_name: str):
         with self.session_db() as session:
             return session.query(Team).filter(Team.name == team_name).first()
+
+    def get_by_id(self, team_id: int):
+        with self.session_db() as session:
+            return session.query(Team).filter(Team.id == team_id).first()

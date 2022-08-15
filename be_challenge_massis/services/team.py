@@ -22,7 +22,16 @@ class TeamService:
             raise HTTPException(status_code=404, detail="This team does not exist!")
 
         if not players:
-            del team_db.coaches
             del team_db.players
+
+        return team_db
+
+    def get_by_id(self, team_id: int):
+        team_db = self.team_repository.get_by_id(team_id)
+        if not team_db:
+            raise HTTPException(status_code=404, detail="This team does not exist!")
+
+        if team_db.players:
+            del team_db.coaches
 
         return team_db
