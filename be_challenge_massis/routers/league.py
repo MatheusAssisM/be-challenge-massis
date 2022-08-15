@@ -14,7 +14,8 @@ router = APIRouter()
     responses={409: {"description": "This League was already imported"}},
 )
 def import_league(
-    data: ImportLeague, league_service: LeagueImportService = Depends(get_league_service)
+    data: ImportLeague,
+    league_service: LeagueImportService = Depends(get_league_service),
 ):
     data = jsonable_encoder(data)
     result = league_service.import_league(data["league_code"])
