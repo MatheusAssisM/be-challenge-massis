@@ -11,6 +11,7 @@ class Coach(Base):
     name = Column(String(length=100), nullable=False)
     nationality = Column(String(length=50), nullable=False)
     date_of_birth = Column(Date, nullable=False)
+    football_id = Column(Integer)
     created_at = Column(DateTime, nullable=False, default=text("CURRENT_TIMESTAMP"))
 
     team_id = Column(Integer, ForeignKey("teams.id"))

@@ -12,6 +12,8 @@ class League(Base):
     name = Column(String(length=100), nullable=False)
     code = Column(String(length=10), nullable=False, unique=True)
     area_name = Column(String(length=50), nullable=False)
+    football_id = Column(Integer)
+    last_api_update = Column(DateTime, nullable=False)
     created_at = Column(DateTime, nullable=False, default=text("CURRENT_TIMESTAMP"))
 
     teams = relationship(
