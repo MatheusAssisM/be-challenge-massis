@@ -1,6 +1,7 @@
 # Be Challenge MdeAssis
 
-Hi there, I'm Matheus. I'm made this test to prove my skills in the field of software development. I tried to apply all the knowledge I've learned in the past few years and with short time I've been able to make this project. I hope that we can talk more about it.
+Hi there, I'm Matheus. I made this test to prove my skills in the field of software development. 
+I tried to apply all the knowledge I've learned in the past few years with this short period time.
 # Choices
 
 **Framework**: I chose fastapi because of the size and complexity of the project. This framework is very fast and easy to use has some nice features as background tasks that can helpful in the future
@@ -50,4 +51,4 @@ docker compose up
 
 > If you want to test it on **postman** just download the [collection](https://drive.google.com/file/d/1FbGP0p0thw71KsyhTXfxvL1wmJ57M485/view?usp=sharing) and import there.  
 
-[⬆ Voltar ao topo](README.md)<br>
+[⬆ Back to the Top](README.md)<br>
