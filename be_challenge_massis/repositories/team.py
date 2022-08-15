@@ -13,4 +13,8 @@ class TeamRepository:
         with self.session_db() as session:
             session.bulk_save_objects(teams, return_defaults=True)
             session.commit()
-        return teams
+        return teams or []
+
+    def get_existing_teams(self, team_ids: List[int]):
+        with self.session_db() as session:
+            return session.query(Team).filter(Team.football_id.in_(team_ids)).all()
