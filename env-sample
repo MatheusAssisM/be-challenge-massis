@@ -6,3 +6,6 @@ DB_USER=postgres
 DB_PASSWORD=postgres
 DB_PORT=5432
 DB_HOST=be-challenge-massis-postgres.com
+
+REDIS_HOST_URL=be-challenge-massis-redis.com
+REDIS_PORT=6379
