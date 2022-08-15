@@ -28,3 +28,7 @@ def get_league_service(session_db: Session = Depends(get_postgres_session)):
 def get_player_service(session_db: Session = Depends(get_postgres_session)):
     league_service = LeagueService(session_db)
     return PlayerService(session_db, league_service)
+
+
+def get_team_service(session_db: Session = Depends(get_postgres_session)):
+    return TeamService(session_db)

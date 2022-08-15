@@ -18,3 +18,7 @@ class TeamRepository:
     def get_existing_teams(self, team_ids: List[int]):
         with self.session_db() as session:
             return session.query(Team).filter(Team.football_id.in_(team_ids)).all()
+
+    def get_team_by_name(self, team_name: str):
+        with self.session_db() as session:
+            return session.query(Team).filter(Team.name == team_name).first()
