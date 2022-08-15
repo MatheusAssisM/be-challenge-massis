@@ -48,6 +48,6 @@ docker compose up
 
 > You can see the swagger here http://localhost:8080/docs
 
-> If you want to test it on **postman** just download the [collection](https://www.getpostman.com/downloads/mac) and import there.  
+> If you want to test it on **postman** just download the [collection](https://drive.google.com/file/d/1FbGP0p0thw71KsyhTXfxvL1wmJ57M485/view?usp=sharing) and import there.  
 
 [⬆ Voltar ao topo](README.md)<br>
