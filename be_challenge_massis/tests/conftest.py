@@ -18,5 +18,5 @@ def client():
 
 
 @fixture
-def postgres():
+def sqlite():
     return override_sqlite3_session

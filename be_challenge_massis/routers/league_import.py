@@ -3,7 +3,7 @@ from fastapi.encoders import jsonable_encoder
 
 from ..schemas.league import ImportLeague
 from ..services.league_import import LeagueImportService
-from ..dependencies.services import get_league_service
+from ..dependencies.services import get_league_import_service
 
 router = APIRouter()
 
@@ -15,7 +15,7 @@ router = APIRouter()
 )
 def import_league(
     data: ImportLeague,
-    league_service: LeagueImportService = Depends(get_league_service),
+    league_service: LeagueImportService = Depends(get_league_import_service),
 ):
     data = jsonable_encoder(data)
     result = league_service.import_league_data(data["league_code"])

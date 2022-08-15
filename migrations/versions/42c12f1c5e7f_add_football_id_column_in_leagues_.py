@@ -18,22 +18,15 @@ depends_on = None
 
 def upgrade() -> None:
     op.add_column("leagues", sa.Column("football_id", sa.Integer()))
-    op.add_column("players", sa.Column("football_id", sa.Integer()))
     op.add_column("teams", sa.Column("football_id", sa.Integer()))
     op.add_column("coaches", sa.Column("football_id", sa.Integer()))
 
     op.create_unique_constraint("uq_leagues_football_id", "leagues", ["football_id"])
-    op.create_unique_constraint("uq_players_football_id", "players", ["football_id"])
     op.create_unique_constraint("uq_teams_football_id", "teams", ["football_id"])
     op.create_unique_constraint("uq_coaches_football_id", "coaches", ["football_id"])
 
 
 def downgrade() -> None:
     op.drop_column("leagues", "football_id")
-    op.drop_column("players", "football_id")
     op.drop_column("teams", "football_id")
     op.drop_column("coaches", "football_id")
-    op.drop_constraint("uq_leagues_football_id", "leagues")
-    op.drop_constraint("uq_players_football_id", "players")
-    op.drop_constraint("uq_teams_football_id", "teams")
-    op.drop_constraint("uq_coaches_football_id", "coaches")

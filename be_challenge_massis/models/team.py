@@ -24,5 +24,5 @@ class Team(Base):
         back_populates="teams",
         lazy="joined",
     )
-    players = relationship("Player", back_populates="team")
+    players = relationship("Player", back_populates="team", lazy="joined")
     coaches = relationship("Coach", back_populates="team")

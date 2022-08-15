@@ -45,13 +45,12 @@ class LeagueImportService:
         new_teams = self.team_repository.bulk_create(teams)
         teams_to_associate = new_teams + teams_db
 
-        self.league_repository.associate_team_league(league_db, teams_to_associate)
-
         if new_teams:
             players, coaches = self.prepare_team_composition(league_teams, new_teams)
             self.coach_repository.bulk_create(coaches)
             self.player_repository.bulk_create(players)
 
+        self.league_repository.associate_team_league(league_db, teams_to_associate)
         return "League data imported successfully!"
 
     def prepare_league_data(self, league: dict):
@@ -70,7 +69,7 @@ class LeagueImportService:
         last_update_api = format_datetime(league["lastUpdated"])
         if last_update_db <= last_update_api:
             raise HTTPException(
-                status_code=400,
+                status_code=409,
                 detail="League data is already up to date!",
             )
         return True
@@ -129,6 +128,5 @@ class LeagueImportService:
             "position": player_data["position"],
             "date_of_birth": format_date_of_birth(player_data["dateOfBirth"]),
             "nationality": player_data["nationality"],
-            "football_id": player_data["id"],
             "team_id": team_id,
         }
