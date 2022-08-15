@@ -18,5 +18,5 @@ def import_league(
     league_service: LeagueImportService = Depends(get_league_service),
 ):
     data = jsonable_encoder(data)
-    result = league_service.import_league(data["league_code"])
+    result = league_service.import_league_data(data["league_code"])
     return {"message": result}
