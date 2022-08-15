@@ -18,7 +18,7 @@ def get_league_import_service(
 ):
     football_api_service = FootballAPIService(redis_client)
     league_service = LeagueService(session_db)
-    team_service = TeamService(session_db)
+    team_service = TeamService(session_db, redis_client)
     return LeagueImportService(
         session_db, football_api_service, league_service, team_service
     )
