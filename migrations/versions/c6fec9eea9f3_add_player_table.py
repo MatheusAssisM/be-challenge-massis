@@ -23,7 +23,7 @@ def upgrade() -> None:
         sa.Column("name", sa.String(length=100), nullable=False),
         sa.Column("position", sa.String(length=10), nullable=False),
         sa.Column("nationality", sa.String(length=50), nullable=False),
-        sa.Column("date_of_birth", sa.Date(), nullable=False),
+        sa.Column("date_of_birth", sa.Date()),
         sa.Column(
             "created_at", sa.DateTime, nullable=False, server_default=sa.text("now()")
         ),

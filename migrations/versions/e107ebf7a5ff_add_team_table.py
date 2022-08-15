@@ -21,8 +21,8 @@ def upgrade() -> None:
         "teams",
         sa.Column("id", sa.Integer, primary_key=True),
         sa.Column("name", sa.String(length=255), nullable=False),
-        sa.Column("tla", sa.String(length=3), nullable=False),
-        sa.Column("short_name", sa.String(length=30), nullable=False),
+        sa.Column("tla", sa.String(length=3)),
+        sa.Column("short_name", sa.String(length=30)),
         sa.Column("area_name", sa.String(length=50), nullable=False),
         sa.Column("address", sa.String(length=255), nullable=False),
         sa.Column(
