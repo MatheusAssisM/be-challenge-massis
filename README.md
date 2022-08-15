@@ -20,8 +20,9 @@ Hi there, I'm Matheus. I'm made this test to prove my skills in the field of sof
 
 # General Architecture
 <p align="">
-  <img src="" alt="Architecture" float="rigth" width="400"> 
+  <img src="https://user-images.githubusercontent.com/65235458/184613414-83e37a34-a475-441e-8903-a424da86b69e.png" alt="Architecture" float="rigth" width="400"> 
 </p>
+
 
 ## Requirements
 
