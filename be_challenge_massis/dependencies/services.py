@@ -1,7 +1,6 @@
 from fastapi import Depends
+from redis import Redis
 from sqlalchemy.orm import Session
-
-from ..services.player import PlayerService
 
 from ..services import (
     FootballAPIService,
@@ -9,11 +8,15 @@ from ..services import (
     LeagueService,
     TeamService,
 )
-from .databases import get_postgres_session
+from ..services.player import PlayerService
+from .databases import get_postgres_session, get_redis_client
 
 
-def get_league_import_service(session_db: Session = Depends(get_postgres_session)):
-    football_api_service = FootballAPIService()
+def get_league_import_service(
+    session_db: Session = Depends(get_postgres_session),
+    redis_client: Redis = Depends(get_redis_client),
+):
+    football_api_service = FootballAPIService(redis_client)
     league_service = LeagueService(session_db)
     team_service = TeamService(session_db)
     return LeagueImportService(
