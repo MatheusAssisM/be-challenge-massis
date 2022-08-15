@@ -1,8 +1,9 @@
-from ..configs.postgres import Postgres
+from ..configs.postgres import Database
 
-postgres = Postgres("sqlite:///./test.db")
-ENGINE = postgres.engine
+sqlite = Database("sqlite:///test.db")
+
+ENGINE = sqlite.engine
 
 
-def override_postgres_session():
-    return postgres
+def override_sqlite3_session():
+    return sqlite

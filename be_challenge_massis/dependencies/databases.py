@@ -1,6 +1,6 @@
 import os
 
-from ..configs.postgres import Postgres
+from ..configs.postgres import Database
 
 DB_NAME = os.getenv("DB_NAME", "football")
 DB_USER = os.getenv("DB_USER", "postgres")
@@ -14,4 +14,4 @@ POSTGRES_DATABASE_URL = (
 
 
 def get_postgres_session():
-    return Postgres(POSTGRES_DATABASE_URL)
+    return Database(POSTGRES_DATABASE_URL)

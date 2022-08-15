@@ -6,7 +6,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-class Postgres:
+class Database:
     def __init__(self, db_url: str):
         self.engine = create_engine(db_url)
         self._session_factory = scoped_session(
@@ -14,12 +14,13 @@ class Postgres:
                 autocommit=False,
                 autoflush=False,
                 bind=self.engine,
-            ),
+            )
         )
 
     @contextmanager
     def session(self):
         session: Session = self._session_factory()
+        session.expire_on_commit = False
         try:
             yield session
         except Exception:

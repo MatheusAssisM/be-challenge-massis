@@ -1,0 +1,8 @@
+FOOTBALL_API_URL=https://api.football-data.org/v4
+FOOTBALL_API_KEY=a601647b44264cf397b4a0f4415a83f5
+
+DB_NAME=football
+DB_USER=postgres
+DB_PASSWORD=postgres
+DB_PORT=5432
+DB_HOST=be-challenge-massis-postgres.com

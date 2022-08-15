@@ -4,9 +4,9 @@ from be_challenge_massis.models.base import Base
 from fastapi.testclient import TestClient
 from pytest import fixture
 
-from ..helpers.tests import ENGINE, override_postgres_session
+from ..helpers.tests import ENGINE, override_sqlite3_session
 
-app.dependency_overrides[get_postgres_session] = override_postgres_session
+app.dependency_overrides[get_postgres_session] = override_sqlite3_session
 
 
 @fixture
@@ -19,4 +19,4 @@ def client():
 
 @fixture
 def postgres():
-    return override_postgres_session
+    return override_sqlite3_session
