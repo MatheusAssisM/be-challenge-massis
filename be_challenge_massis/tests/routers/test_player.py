@@ -1,7 +1,16 @@
 from ...models import Player, Team
+from ...helpers.tests import league_output, teams_output
 
 
-def test_should_get_league_players(client, sqlite):
+def test_should_get_league_players(client, sqlite, mocker):
+    mocker.patch(
+        "be_challenge_massis.services.FootballAPIService.get_league",
+        return_value=league_output.copy(),
+    )
+    mocker.patch(
+        "be_challenge_massis.services.FootballAPIService.get_league_teams",
+        return_value=teams_output.copy(),
+    )
     client.post("/import-league", json={"league_code": "PL"})
     response = client.get("/player?league=PL")
 
@@ -11,7 +20,15 @@ def test_should_get_league_players(client, sqlite):
     assert len(response.json()["players"]) == db_count
 
 
-def test_should_get_league_players_by_team_name(client, sqlite):
+def test_should_get_league_players_by_team_name(client, sqlite, mocker):
+    mocker.patch(
+        "be_challenge_massis.services.FootballAPIService.get_league",
+        return_value=league_output.copy(),
+    )
+    mocker.patch(
+        "be_challenge_massis.services.FootballAPIService.get_league_teams",
+        return_value=teams_output.copy(),
+    )
     client.post("/import-league", json={"league_code": "PL"})
     response = client.get("/player?league=PL&team=Arsenal")
 
